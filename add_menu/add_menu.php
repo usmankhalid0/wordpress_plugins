@@ -66,6 +66,11 @@ function drop_table()
   $sql = "Drop table IF EXISTS   {$table_name}";
   $wpdb->query($sql);
 
+  $page_info = "Add-Menu-page";
+  $page_del = get_page_by_path($page_info);
+  $pageid = $page_del->ID;
+  wp_delete_post($pageid);
+
 }
 register_deactivation_hook(__FILE__,'drop_table');
 function styles_and_scripts()
